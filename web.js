@@ -22,7 +22,7 @@ app.put('/daonvoice/greet', function(req, res) {
         numDigits:'8',
         timeout:'10'
     }, function() {
-        this.say('Please enter your eight digit account number and then press hash.', {	voice:'woman', language:'en-gb'});
+        this.say('Please enter your eight digit account number and then press hash.', {	voice:'woman', language:'en-gb'} );
     });
 
     respTwiml.say('We did not receive any input. Goodbye!', {voice:'woman', language:'en-gb'});
