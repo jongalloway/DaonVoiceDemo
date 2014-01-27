@@ -21,7 +21,7 @@
   "homepage": "https://github.com/pfkenny/DaonVoiceDemo",
   "dependencies": {
     "logfmt": "~0.20.0",
-    "express": "~3.4.8"
+    "express": "~3.4.8",
     "twilio": "~1.5.0"
   },
   "engines": {
