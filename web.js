@@ -32,7 +32,7 @@ app.post('/daonvoice/greet', twilio.webhook({
 
     respTwiml.say('We did not receive any input. Goodbye!', {voice:'woman', language:'en-gb'});
 
-    res.send(twiml);
+    res.send(respTwiml);
 });
 
 /*app.put('/daonvoice/greet', function(req, res) {
