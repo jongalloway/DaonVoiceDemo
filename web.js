@@ -19,7 +19,7 @@ app.post('/daonvoice/greet', twilio.webhook({
 	var respTwiml = new twilio.TwimlResponse();
 	var baseURL = req.protocol + "://" + req.get('host');
 
-	respTwiml.say('Welcome to Daon Social Services.', { voice:'woman', language:'en-gb'});
+	respTwiml.say('Welcome to day on Social Services.', { voice:'woman', language:'en-gb'});
 	
 	respTwiml.gather({
         action:baseURL + '/daonvoice/isregistered',
