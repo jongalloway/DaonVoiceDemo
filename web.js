@@ -13,10 +13,12 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/daonvoice/greet', twilio.webhook(), function(req, res) {
+app.post('/daonvoice/greet', twilio.webhook({
+	validate:false
+}), function(req, res) {
 	var respTwiml = new twilio.TwimlResponse();
 	var baseURL = req.protocol + "://" + req.get('host');
-	
+
 	respTwiml.say('Welcome to Daon Social Services.', { voice:'woman', language:'en-gb'});
 	
 	respTwiml.gather({
