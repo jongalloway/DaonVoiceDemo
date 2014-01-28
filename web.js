@@ -35,27 +35,10 @@ app.post('/daonvoice/greet', twilio.webhook({
     res.send(respTwiml);
 });
 
-/*app.put('/daonvoice/greet', function(req, res) {
-	var baseURL = req.protocol + "://" + req.get('host');
-	var respTwiml = new twilio.TwimlResponse();
-	
-	respTwiml.say('Welcome to Daon Social Services.', { voice:'woman', language:'en-gb'});
-	
-	respTwiml.gather({
-        action:baseURL + '/daonvoice/isregistered',
-        finishOnKey:'#',
-        numDigits:'8',
-        timeout:'10'
-    }, function() {
-        this.say('Please enter your eight digit account number and then press hash.', {	voice:'woman', language:'en-gb'} );
-    });
 
-    respTwiml.say('We did not receive any input. Goodbye!', {voice:'woman', language:'en-gb'});
-
-	res.send(respTwiml.toString());
-});*/
-
-app.put('/daonvoice/isregistered', function(req, res) {
+app.post('/daonvoice/isregistered', twilio.webhook({
+	validate:false
+}), function(req, res) {
 	var baseURL = req.protocol + "://" + req.get('host');
 	var respTwiml = new twilio.TwimlResponse();
 	
@@ -69,21 +52,27 @@ app.put('/daonvoice/isregistered', function(req, res) {
 
 	//If not registered forward to registration
 	
-	res.send(respTwiml.toString());
+    res.send(respTwiml);
 });
 
-app.put('/daonvoice/verify', function(req, res) {
+app.post('/daonvoice/verify', twilio.webhook({
+	validate:false
+}), function(req, res) {
 	var baseURL = req.protocol + "://" + req.get('host');
 	var respTwiml = new twilio.TwimlResponse();
 	
 	respTwiml.say('We got your number!.', { voice:'woman', language:'en-gb'});
+    res.send(respTwiml);
 });
 
-app.put('/daonvoice/register', function(req, res) {
+app.post('/daonvoice/register', twilio.webhook({
+	validate:false
+}), function(req, res) {
 	var baseURL = req.protocol + "://" + req.get('host');
 	var respTwiml = new twilio.TwimlResponse();
 	
 	respTwiml.say('We got your number!.', { voice:'woman', language:'en-gb'});
+    res.send(respTwiml);
 });
 
 var port = Number(process.env.PORT || 5000);
