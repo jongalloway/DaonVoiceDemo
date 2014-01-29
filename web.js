@@ -57,7 +57,8 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 	
 	//Get Number
 	var accountNumber = req.param("Digits");
-	console.log("Got Account Number: " + accountNumber);
+	var callSid = req.param("CallSid");
+	console.log("Got Account Number: " + accountNumber + " from call: " + callSid);
 	if (accountNumber){
 		//Retrieve record and handle error
 		getCustomerByAccountID(accountNumber, function(customer){
@@ -72,6 +73,8 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 				    }, function() {
 				        this.say('Please enter your four digit PIN and then press hash.', {	voice:'woman', language:'en-gb'} );
 				    });
+				    var listRef = myRootRef.child('verifications/');
+					listRef.child(callSid).set({account_number: accountNumber});
 				} else {
 					respTwiml.gather({
 				        action:baseURL + '/daonvoice/register',
@@ -81,6 +84,8 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 				    }, function() {
 				        this.say('Welcome ' + customer.name.first + ' ' + customer.name.last + '.  You are a new user so we must validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
 				    });
+				    var listRef = myRootRef.child('registrations/');
+					listRef.child(callSid).set({account_number: accountNumber});
 				}
 				res.send(respTwiml);
 			} else {
