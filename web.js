@@ -31,7 +31,7 @@ app.post('/daonvoice/greet', twilio.webhook({
 	var respTwiml = new twilio.TwimlResponse();
 	var baseURL = req.protocol + "://" + req.get('host');
 
-	respTwiml.say('Welcome to day on Social Services.', { voice:'woman', language:'en-gb'});
+	respTwiml.say('Welcome to dayon Social Services.', { voice:'woman', language:'en-gb'});
 	
 	respTwiml.gather({
         action:baseURL + '/daonvoice/isregistered',
@@ -78,7 +78,7 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 				        numDigits:'4',
 				        timeout:'10'
 				    }, function() {
-				        this.say('You are a new user so we need validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
+				        this.say('Welcome ' customer.name.first + ' ' + customer.name.last + '.  You are a new user so we must validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
 				    });
 				}
 				res.send(respTwiml);
