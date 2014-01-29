@@ -78,7 +78,7 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 				        numDigits:'4',
 				        timeout:'10'
 				    }, function() {
-				        this.say('Welcome ' customer.name.first + ' ' + customer.name.last + '.  You are a new user so we must validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
+				        this.say('Welcome ' + customer.name.first + ' ' + customer.name.last + '.  You are a new user so we must validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
 				    });
 				}
 				res.send(respTwiml);
