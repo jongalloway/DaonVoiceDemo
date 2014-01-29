@@ -86,13 +86,13 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 			} else {
 				respTwiml.say('The registration number was not valid!.', { voice:'woman', language:'en-gb'});
 				//send back to greet
-				respTwiml.redirect(action:baseURL + '/daonvoice/greet');
+				respTwiml.redirect(baseURL + '/daonvoice/greet');
 			}
 		});
 	} else {
 		respTwiml.say('The registration number was not received!.', { voice:'woman', language:'en-gb'});
 		//send back to greet
-		respTwiml.redirect(action:baseURL + '/daonvoice/greet');
+		respTwiml.redirect(baseURL + '/daonvoice/greet');
 	}
     res.send(respTwiml);
 });
