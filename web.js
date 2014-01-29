@@ -9,12 +9,10 @@ var myRootRef = new Firebase('https://daon-voice-demo.firebaseio.com/');
 var validateTwilioAuth = true;
 
 var getCustomerByAccountID = function(accountNumber, callback) {
-    myRootRef.auth(token, function(anErr, aResult) {
-        myCustomerRef = myRootRef.child('customers/'+accountNumber);
-        myCustomerRef.once('value', function(snapshot){
-            var customer = snapshot.val();
-            callback(customer);
-        })
+    var myCustomerRef = myRootRef.child('customers/'+accountNumber);
+    myCustomerRef.once('value', function(snapshot){
+        var customer = snapshot.val();
+        callback(customer);
     })
 }
 
