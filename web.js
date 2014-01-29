@@ -1,4 +1,5 @@
 // web.js
+var newrelic = require('newrelic');
 var express = require("express");
 var logfmt = require("logfmt");
 var twilio = require('twilio');
