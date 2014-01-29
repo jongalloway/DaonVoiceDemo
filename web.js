@@ -81,18 +81,20 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 				        this.say('You are a new user so we need validate your details. Please enter the four digits of your year of birth and then press hash.', {	voice:'woman', language:'en-gb'} );
 				    });
 				}
+				res.send(respTwiml);
 			} else {
 				respTwiml.say('The registration number was not valid!.', { voice:'woman', language:'en-gb'});
 				//send back to greet
 				respTwiml.redirect(baseURL + '/daonvoice/greet');
+				res.send(respTwiml);
 			}
 		});
 	} else {
 		respTwiml.say('The registration number was not received!.', { voice:'woman', language:'en-gb'});
 		//send back to greet
 		respTwiml.redirect(baseURL + '/daonvoice/greet');
+    	res.send(respTwiml);
 	}
-    res.send(respTwiml);
 });
 
 app.post('/daonvoice/verify', twilio.webhook({
