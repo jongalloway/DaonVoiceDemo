@@ -57,7 +57,7 @@ app.post('/daonvoice/isregistered', twilio.webhook({
 	var respTwiml = new twilio.TwimlResponse();
 	
 	//Get Number
-	var accountNumber = req.param(digits);
+	var accountNumber = req.param("digits");
 	console.log("Got Account Number: " + accountNumber);
 	if (accountNumber){
 		//Retrieve record and handle error
