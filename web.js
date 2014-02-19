@@ -33,7 +33,7 @@ var getCustomerByCallSid = function(callSid, callback) {
 			accountNumber = interaction.account_number;
 			getCustomerByAccountID(accountNumber, function(customer){
 				callback(customer);
-			}
+			});
 		} else {
 			callback(null);
 		}
